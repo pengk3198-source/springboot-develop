@@ -20,10 +20,16 @@ public class Menber{
      @Column(name="name",nullable = false)
     private String   name;
 
+     public Menber(String name){
+         this.name=name;
+     }
+
      public String getName(){
          return  name;
      }
-
+    public Long getid(){
+        return  id;
+    }
 
 
 }
