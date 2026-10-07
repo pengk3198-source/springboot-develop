@@ -8,10 +8,16 @@ import java.util.List;
 
 @RestController
 public class MemberController {
+
     @Autowired
-    private MenberService menberService;
-    @GetMapping("/menber")
-    public List<Menber> getAllMembers(){
-       return menberService.getAllMenbers();
+    private MenberService memberService;
+
+    @GetMapping("/member")
+    public List<Menber> getAllMembers() {
+        return memberService.getAllMenbers();
+    }
+    @GetMapping("/hello123")
+    public String hello123() {
+        return "OK";
     }
 }
