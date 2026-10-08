@@ -103,7 +103,7 @@ class QuizControllerTest {
 
         // then
         result
-                .andExpect(status().isForbidden())
-                .andExpect(content().string("ok"));
+                .andExpect(status().isOk())
+                .andExpect(content().string("OK"));
     }
 }
