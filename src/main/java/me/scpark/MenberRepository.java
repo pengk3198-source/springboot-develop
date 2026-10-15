@@ -13,4 +13,6 @@ public interface MenberRepository extends JpaRepository<Menber,Long> {
    public Optional<Menber> findByName(String name);
 
 
+
+
 }

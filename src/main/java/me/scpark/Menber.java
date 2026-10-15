@@ -27,9 +27,14 @@ public class Menber{
      public String getName(){
          return  name;
      }
-    public Long getid(){
-        return  id;
+    public Long getid() {
+        return id;
     }
+
+    public void setName(String name){
+         this.name=name;
+    }
+
 
 
 }
