@@ -30,6 +30,13 @@ public class BlogService {
                 .orElseThrow(() ->
                         new IllegalArgumentException("文章不存在: " + id));
     }
+    public void delete(Long id) {
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() ->
+                        new IllegalArgumentException("文章不存在: " + id));
+
+        blogRepository.delete(article);
+    }
 
 
 }
