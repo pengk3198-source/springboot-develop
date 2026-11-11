@@ -7,10 +7,7 @@ import me.scpark.dto.ArticleResponse;
 import me.scpark.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,13 +18,13 @@ public class BlogApiController {
     private final BlogService blogService;
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(
+    public ResponseEntity<ArticleResponse> addArticle(
             @RequestBody AddArticleRequest request) {
 
         Article savedArticle = blogService.save(request);
 
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(savedArticle);
+                .body(new ArticleResponse(savedArticle));
     }
 
     @GetMapping("/api/articles")
@@ -47,4 +44,9 @@ public class BlogApiController {
       return ResponseEntity.ok().body(articleResponseList);
 
     }
+    @GetMapping("/api/articles/{id}")
+    public Article getArticle(@PathVariable Long id) {
+        return blogService.findById(id);
+    }
+
 }
