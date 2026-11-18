@@ -1,9 +1,12 @@
 package me.scpark.controller;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.scpark.domain.Article;
 import me.scpark.dto.AddArticleRequest;
 import me.scpark.dto.ArticleResponse;
+import me.scpark.dto.UpdateArticleRequest;
+import me.scpark.repository.BlogRepository;
 import me.scpark.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,4 +58,15 @@ public class BlogApiController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<ArticleResponse> updateArticle(
+            @PathVariable long id,
+            @RequestBody UpdateArticleRequest req) {
+
+        Article article = blogService.update(id, req);
+
+        return ResponseEntity.ok(new ArticleResponse(article));
+    }
+
 }

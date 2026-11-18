@@ -26,4 +26,13 @@ public class Article {
 
     }
 
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }
